@@ -15,7 +15,7 @@ export const asyncdata = (id) => async (dispatch, getState) => {
       video: video.data.results.find((f) => (f.type = "Trailer")),
       similar: similar.data.results,
       recommendations: recommendations.data.results,
-      watchlinks: watchlinks.data.results,
+      watchlinks: watchlinks.data.results.IN,
     };
     dispatch(setMovies(combineddata));
   } catch (error) {

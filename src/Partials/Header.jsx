@@ -45,9 +45,9 @@ const Header = ({ data }) => {
             </Link>
           )}
         </p>
-        <button className="py-2 mt-2 px-5 rounded bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300 text-sm font-semibold text-white">
+        <Link className="py-2 mt-2 px-5 rounded bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300 text-sm font-semibold text-white">
           <i className="ri-play-fill text-white"></i> Watch Now
-        </button>
+        </Link>
       </div>
     </div>
   );

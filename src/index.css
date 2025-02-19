@@ -2,3 +2,13 @@
 *{
   font-family: Figtree;
 }
+::-webkit-scrollbar{
+  height: 5px;
+  width: 5px;
+
+}
+::-webkit-scrollbar-thumb{
+  background-color: gray;
+  border-radius: 5px;
+  box-shadow: rgb(36, 36, 36) 2px 5px 17px 2px;
+}
