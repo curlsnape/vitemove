@@ -26,7 +26,7 @@ const MovieDetails = () => {
         <i onClick={() => navigate("/")} class="ri-arrow-left-line"></i>
         <a target="_blank" href={movies.details.homepage}>
           <i className="ri-external-link-line"></i>
-        </a>
+        </a>   
         <a
           target="_blank"
           href={`https://www.wikidata.org/wiki/${movies.external_id.wikidata_id}`}
@@ -79,46 +79,54 @@ const MovieDetails = () => {
       </div>
       {/* part 3 */}
       <div className="w-[50%] flex-col  my-5 h-[30vh] ">
-        <div className=" flex  gap-5 items-center">
-          <h2>Buy links</h2>
-          <div className="w-[60%] flex gap-5 ">
-            {movies.watchlinks.buy.map((provider, index) => (
-              <img
-                className="w-10 h-10 object-cover rounded-full"
-                key={index}
-                src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
-                alt={provider.provider_name}
-              />
-            ))}
+        {movies.watchlinks.buy && (
+          <div className=" flex  gap-5 items-center">
+            <h2>Buy links</h2>
+            <div className="w-[60%] flex gap-5 ">
+              {movies.watchlinks.buy.map((provider, index) => (
+                <img
+                  className="w-10 h-10 object-cover rounded-full"
+                  key={index}
+                  src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                  alt={provider.provider_name}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className=" flex mt-5  gap-5 items-center">
-          <h2>Flatrate links</h2>
-          <div className="w-[60%] flex gap-5 ">
-            {movies.watchlinks.flatrate.map((flat, index) => (
-              <img
-                className="w-10 h-10 object-cover rounded-full"
-                key={index}
-                src={`https://image.tmdb.org/t/p/original${flat.logo_path}`}
-                alt={flat.provider_name}
-              />
-            ))}
+        )}
+        {movies.watchlinks && movies.watchlinks.flatrate && (
+          <div className=" flex mt-5  gap-5 items-center">
+            <h2>Flatrate links</h2>
+            <div className="w-[60%] flex gap-5 ">
+              {movies.watchlinks.flatrate.map((flat, index) => (
+                <img
+                  className="w-10 h-10 object-cover rounded-full"
+                  key={index}
+                  src={`https://image.tmdb.org/t/p/original${flat.logo_path}`}
+                  alt={flat.provider_name}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className=" flex mt-5  gap-5 items-center">
-          <h2>Rent links</h2>
-          <div className="w-[60%] flex gap-5 ">
-            {movies.watchlinks.rent.map((flat, index) => (
-              <img
-                className="w-10 h-10 rounded-full object-cover"
-                key={index}
-                src={`https://image.tmdb.org/t/p/original${flat.logo_path}`}
-                alt={flat.provider_name}
-              />
-            ))}
+        )}
+        {movies.watchlinks &&movies.watchlinks.rent && (
+          <div className=" flex mt-5  gap-5 items-center">
+            <h2>Rent links</h2>
+            <div className="w-[60%] flex gap-5 ">
+              {movies.watchlinks.rent.map((flat, index) => (
+                <img
+                  className="w-10 h-10 rounded-full object-cover"
+                  key={index}
+                  src={`https://image.tmdb.org/t/p/original${flat.logo_path}`}
+                  alt={flat.provider_name}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
+      {/* part 4 */}
+      
     </div>
   ) : (
     <h1>Loading..</h1>
