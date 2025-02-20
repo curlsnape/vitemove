@@ -8,6 +8,7 @@ import Topnav from "../Partials/Topnav";
 import Dropdown from "../Partials/Dropdown";
 
 function Movie() {
+   document.title = "Movixer | Movies"
   const navigate = useNavigate();
   const [category, setcategory] = useState("now_playing");
   const [movie, setmovie] = useState([]);

@@ -8,6 +8,7 @@ import Topnav from "../Partials/Topnav";
 import Dropdown from "../Partials/Dropdown";
 
 function Popular() {
+   document.title = "Movixer | Popular"
   const navigate = useNavigate();
   const [category, setcategory] = useState("movie");
   const [popular, setpopular] = useState([]);

@@ -10,5 +10,5 @@
 ::-webkit-scrollbar-thumb{
   background-color: gray;
   border-radius: 5px;
-  box-shadow: rgb(36, 36, 36) 2px 5px 17px 2px;
+  /* box-shadow: rgb(36, 36, 36) 2px 5px 17px 2px; */
 }

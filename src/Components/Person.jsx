@@ -8,6 +8,7 @@ import Topnav from "../Partials/Topnav";
 import Dropdown from "../Partials/Dropdown";
 
 const Person = () => {
+   document.title = "Movixer | People"
     const navigate = useNavigate();
     // const [category, setcategory] = useState("on_the_air");
     const [people, setpeople] = useState([]);

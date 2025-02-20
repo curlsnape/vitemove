@@ -7,7 +7,7 @@ function Horizontals({ data }) {
       {data.map((card, index) => {
         return (
           <Link
-            to={`${card.media_type}/details/${card.id}`}
+            to={`/${card.media_type}/details/${card.id}`}
             key={index}
             className="w-[20%] rounded-sm pb-5 mt-2 shrink-0 overflow-hidden h-[40vh] bg-zinc-800 shadow-md shadow-zinc-700"
           >

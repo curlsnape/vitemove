@@ -8,6 +8,7 @@ import Topnav from "../Partials/Topnav";
 import Dropdown from "../Partials/Dropdown";
 
 function Tv() {
+   document.title = "Movixer | Tv"
     const navigate = useNavigate();
     const [category, setcategory] = useState("on_the_air");
     const [tv, settv] = useState([]);

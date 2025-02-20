@@ -35,7 +35,7 @@ const Topnav = () => {
           searches.map((item, index) => {
             return (
               <Link
-                to={`${item.media_type}/details/${item.id}`}
+                to={`/${item.media_type}/details/${item.id}`}
                 key={index}
                 className="px-5 flex items-center border-black border-b-[1px] py-8  gap-5"
               >

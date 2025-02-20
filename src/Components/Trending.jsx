@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Trending = () => {
+  document.title = "Movixer | Trending"
   const navigate = useNavigate();
   const [duration, setduration] = useState("day");
   const [category, setcategory] = useState("all");
