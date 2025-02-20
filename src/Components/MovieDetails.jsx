@@ -25,7 +25,7 @@ const MovieDetails = () => {
       className="w-full px-[10%]  min-h-screen"
     >
       <div className="h-[8vh] z-10 flex gap-10 items-center">
-        <i onClick={() => navigate("/")} class="ri-arrow-left-line"></i>
+        <i onClick={() => navigate("/")} className="ri-arrow-left-line"></i>
         <a target="_blank" href={movies.details.homepage}>
           <i className="ri-external-link-line"></i>
         </a>
@@ -33,7 +33,7 @@ const MovieDetails = () => {
           target="_blank"
           href={`https://www.wikidata.org/wiki/${movies.external_id.wikidata_id}`}
         >
-          <i class="ri-earth-fill"></i>
+          <i className="ri-earth-fill"></i>
         </a>
         <a
           target="_blank"
@@ -48,7 +48,7 @@ const MovieDetails = () => {
       <div className="flex h-[60vh] mt-5  w-full  gap-10">
         <div className="w-[25%] h-full  shadow-xs    shadow-white">
           <img
-            className="w-full h-full object-cover "
+            className="w-full h-full object-cover object-center"
             src={`https://image.tmdb.org/t/p/original/${
               movies.details.backdrop_path ||
               movies.details.poster_path ||

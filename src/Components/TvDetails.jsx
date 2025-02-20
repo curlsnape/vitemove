@@ -25,7 +25,7 @@ function TvDetails() {
       className="w-full px-[10%]  h-[190vh]"
     >
       <div className="h-[8vh] z-10 flex gap-10 items-center">
-        <i onClick={() => navigate("/")} class="ri-arrow-left-line"></i>
+        <i onClick={() => navigate("/")} className="ri-arrow-left-line"></i>
         <a target="_blank" href={tv.details.homepage}>
           <i className="ri-external-link-line"></i>
         </a>
@@ -33,7 +33,7 @@ function TvDetails() {
           target="_blank"
           href={`https://www.wikidata.org/wiki/${tv.external_id.wikidata_id}`}
         >
-          <i class="ri-earth-fill"></i>
+          <i className="ri-earth-fill"></i>
         </a>
         <a
           target="_blank"
@@ -48,7 +48,7 @@ function TvDetails() {
       <div className="flex h-[60vh] mt-5 items-center  w-full  gap-10">
         <div className="w-[25%] h-full  shadow-xs    shadow-white">
           <img
-            className="w-full h-full object-cover "
+            className="w-full h-full object-cover object-center"
             src={`https://image.tmdb.org/t/p/original/${
               tv.details.backdrop_path ||
               tv.details.poster_path ||
@@ -71,7 +71,8 @@ function TvDetails() {
             <h4 className="text-sm">
               {tv.details.release_date || tv.details.first_air_date}
             </h4>
-            <h4 className="text-sm">{tv.details.episode_run_time} mins</h4>
+            {tv.details.episode_run_time .length>0&&   <h4 className="text-sm">{tv.details.episode_run_time} mins</h4>}
+         
           </div>
           <h4 className="font-medium">{tv.details.tagline}</h4>
           <h4 className="font-medium text-sm">
@@ -153,11 +154,10 @@ function TvDetails() {
         {tv.details.seasons.map((s, i) => (
           <div className="min-w-[16%]">
             <img
-              className="h-[37vh] w-full rounded-sm object-cover object-center shadow-[8px_17px_38px_2px_rgba(0,0,0,0.5)]"
+              className="h-[37vh] w-full rounded-sm object-cover object-center "
               src={
-                s.poster_path
-                  ? `https://image.tmdb.org/t/p/original/${s.poster_path}`
-                  : noimage
+                `https://image.tmdb.org/t/p/original/${s.poster_path}`
+     
               }
               alt=""
             />
