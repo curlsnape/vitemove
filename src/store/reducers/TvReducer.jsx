@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  tv: null,
+  info: null,
 };
 const tvreducer = createSlice({
   name: "tv",
   initialState,
   reducers: {
     settv: (state, action) => {
-      state.tv = action.payload;
+      state.info = action.payload;
     },
     removetv: (state, action) => {
-      state.tv = null;
+      state.info = null;
     },
   },
 });

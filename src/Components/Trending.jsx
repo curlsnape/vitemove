@@ -49,7 +49,7 @@ const Trending = () => {
         <div className="logo  flex items-center">
           <span className="hover:text-purple-600 mr-1 transition-all" onClick={()=>navigate("/")}><ArrowLeft size={20} /></span>
           <h3 className="text-xl font-semibold">
-            Trending <span className="text-xs font-semibold uppercase">{category}/{duration}</span>
+            Trending <span className="text-[0.6vw]  font-semibold uppercase">{category}/{duration}</span>
           </h3>
         </div>
         <div className="flex justify-between w-[80%] items-center">

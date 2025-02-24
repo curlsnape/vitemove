@@ -75,10 +75,10 @@ function Persondetails() {
         </div>
         {/* right part */}
         <div className="w-[65vw]  h-full">
-          <h2 className="text-3xl  font-bold">{person.details.name}</h2>
-          <p className="font-medium text-sm">{person.details.biography}</p>
+          <h2 className="text-3xl mb-2 font-bold">{person.details.name}</h2>
+          <p className="font-medium h-40 overflow-y-auto transition-all text-sm ">{person.details.biography}</p>
           <div className="mt-5 w-full">
-            <h3 className="font-semibold text-xl">Starred in</h3>
+            <h3 className="font-semibold text-xl ">Starred in</h3>
             <div className="w-full    flex gap-5 overflow-y-hidden">
               {person.combined_credits.cast.map((s, i) => (
                 <div className="min-w-[20%]">

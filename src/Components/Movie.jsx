@@ -52,7 +52,7 @@ function Movie() {
           </span>
           <h3 className="text-xl font-semibold">
             Movies{" "}
-            <span className="text-xs font-semibold uppercase">{category}</span>
+            <span className="text-[0.6vw] font-semibold uppercase">{category}</span>
           </h3>
         </div>
         <div className="flex justify-between w-[80%] items-center">
@@ -68,13 +68,13 @@ function Movie() {
         dataLength={movie.length}
         next={getmovie}
         hasMore={hasmore}
-        loader={<h1>Loading...</h1>}
+        loader={<h1 className="text-center flex justify-center text-5xl font-semibold   items-center h-screen w-full">Loading...</h1>}
       >
         <Cards data={movie} title="movie" />
       </InfiniteScroll>
     </div>
   ) : (
-    <h1>Loading...</h1>
+    <h1 className="">Loading...</h1>
   );
 }
 

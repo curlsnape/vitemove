@@ -1,10 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = ({ data }) => {
-  const { tv } = useSelector((state) => state.tv);
-  console.log(tv);
   return (
     <div
       style={{
@@ -28,9 +26,7 @@ const Header = ({ data }) => {
           <span className="capitalize text-sm font-medium">
             {data.release_date || data.first_air_date}
           </span>
-          {tv && (
-            <h5 className="">{tv.details.genres.map((gen) => gen.name)}</h5>
-          )}
+       
           {data.adult === "true" ? (
             <span className="h-5 w-6  rounded-sm bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300  font-semibold  text-xs flex justify-center items-center">
               18+
@@ -46,12 +42,15 @@ const Header = ({ data }) => {
             ? `${data.overview.slice(0, 200)}...`
             : data?.overview}
           {data?.overview?.length > 200 && (
-            <Link className="text-sm text-transparent bg-clip-text bg-gradient-to-b from-purple-300 via-indigo-500 to-purple-500">
+            <Link
+              to={`/${data.media_type}/details/${data.id}`}
+              className="text-sm text-transparent bg-clip-text bg-gradient-to-b from-purple-300 via-indigo-500 to-purple-500"
+            >
               more
             </Link>
           )}
         </p>
-        <Link className="py-2 mt-2 px-5 rounded bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300 text-sm font-semibold text-white">
+        <Link to={`/${data.media_type}/details/${data.id}/trailer`} className="py-2 mt-2 px-5 rounded bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300 text-sm font-semibold text-white">
           <i className="ri-play-fill text-white"></i> Watch Now
         </Link>
       </div>

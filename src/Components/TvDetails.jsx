@@ -1,43 +1,44 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asynctvdata } from "../store/actions/TvActions";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import Horizontals from "../Partials/Horizontals";
 
 function TvDetails() {
-  document.title = "Detailpage | Tv"
+  document.title = "Detailpage | Tv";
   const { id } = useParams();
+  const{pathname}=useLocation()
   const navigate = useNavigate();
-  const { tv } = useSelector((state) => state.tv);
-  console.log(tv);
+  const { info } = useSelector((state) => state.tv);
+  console.log(info);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(asynctvdata(id));
   }, [id]);
-  return tv ? (
+  return info ? (
     <div
       style={{
-        background: `linear-gradient(rgba(0,0,0,.455),rgba(0,0,0,.7),rgba(0,0,0,.9)),url(https://image.tmdb.org/t/p/original/${tv.details.backdrop_path})`,
+        background: `linear-gradient(rgba(0,0,0,.455),rgba(0,0,0,.7),rgba(0,0,0,.9)),url(https://image.tmdb.org/t/p/original/${info.details.backdrop_path})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="w-full px-[10%]  h-[190vh]"
+      className="w-full px-[10%]  h-[200vh]"
     >
       <div className="h-[8vh] z-10 flex gap-10 items-center">
         <i onClick={() => navigate("/")} className="ri-arrow-left-line"></i>
-        <a target="_blank" href={tv.details.homepage}>
+        <a target="_blank" href={info.details.homepage}>
           <i className="ri-external-link-line"></i>
         </a>
         <a
           target="_blank"
-          href={`https://www.wikidata.org/wiki/${tv.external_id.wikidata_id}`}
+          href={`https://www.wikidata.org/wiki/${info.external_id.wikidata_id}`}
         >
           <i className="ri-earth-fill"></i>
         </a>
         <a
           target="_blank"
-          href={`https://www.imdb.com/title/${tv.external_id.imdb_id}`}
+          href={`https://www.imdb.com/title/${info.external_id.imdb_id}`}
         >
           <span className=" flex justify-center items-center py-1 leading-none px-3 font-black bg-yellow-400 text-black rounded-sm">
             IMDb
@@ -50,44 +51,45 @@ function TvDetails() {
           <img
             className="w-full h-full object-cover object-center"
             src={`https://image.tmdb.org/t/p/original/${
-              tv.details.backdrop_path ||
-              tv.details.poster_path ||
-              tv.poster_path
+              info.details.backdrop_path ||
+              info.details.poster_path ||
+              info.poster_path
             }`}
             alt=""
           />
         </div>
         <div className="w-[75%] h-full  font-semibold  flex flex-col  gap-2">
           <h2 className="font-semibold text-5xl">
-            {tv.details.title || tv.details.name}
+            {info.details.title || info.details.name}
           </h2>
           <div className="flex gap-5 items-center">
             <span className=" flex justify-center items-center  w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300 text-white">
-              {(tv.details.vote_average * 10).toFixed()}%
+              {(info.details.vote_average * 10).toFixed()}%
             </span>
             <h4 className="text-sm">
-              {tv.details.genres.map((item, index) => item.name)}
+              {info.details.genres.map((item, index) => item.name)}
             </h4>
             <h4 className="text-sm">
-              {tv.details.release_date || tv.details.first_air_date}
+              {info.details.release_date || info.details.first_air_date}
             </h4>
-            {tv.details.episode_run_time .length>0&&   <h4 className="text-sm">{tv.details.episode_run_time} mins</h4>}
-         
+            {info.details.episode_run_time.length > 0 && (
+              <h4 className="text-sm">{info.details.episode_run_time} mins</h4>
+            )}
           </div>
-          <h4 className="font-medium">{tv.details.tagline}</h4>
+          <h4 className="font-medium">{info.details.tagline}</h4>
           <h4 className="font-medium text-sm">
             Episodes:
-            {tv.details.number_of_episodes ||
-              tv.details.seasons[0].episode_count}
+            {info.details.number_of_episodes ||
+              info.details.seasons[0].episode_count}
           </h4>
           <h4 className="font-medium text-sm">
-            Seasons:{tv.details.number_of_seasons}
+            Seasons:{info.details.number_of_seasons}
           </h4>
-          <h5>{tv.details.status}</h5>
+          <h5>{info.details.status}</h5>
           <p className="font-medium leading-4.5 h-16 text-sm overflow-y-auto ">
-            {tv.details.overview}
+            {info.details.overview}
           </p>
-          <Link className="py-2 w-fit mt-2 px-5 rounded bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300 text-sm font-semibold text-white">
+          <Link to={`${pathname}/trailer`} className="py-2 w-fit mt-2 px-5 rounded bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-300 text-sm font-semibold text-white">
             <i className="ri-play-fill text-white"></i> Watch Now
           </Link>
         </div>
@@ -144,33 +146,33 @@ function TvDetails() {
       <div className="w-full   my-5">
         <h2 className="font-semibold text-3xl mb-2">Recommendations</h2>
         <Horizontals
-          data={tv.recommendations.length > 0 ? tv.recommendations : tv.similar}
+          data={info.recommendations.length > 0 ? info.recommendations : info.similar}
         />
       </div>
       <hr className="border-none bg-zinc-600 h-[1px]" />
-      <div className="w-full   my-5">
-        <h2 className="font-semibold text-3xl mb-2">Seasons</h2>
-        <div className="w-full    flex gap-5 overflow-y-hidden">
-        {tv.details.seasons.map((s, i) => (
-          <div className="min-w-[16%]">
-            <img
-              className="h-[37vh] w-full rounded-sm object-cover object-center "
-              src={
-                `https://image.tmdb.org/t/p/original/${s.poster_path}`
-     
-              }
-              alt=""
-            />
-            <h1 className="font-semibold text-lg mt-2 mb-3 text-zinc-300 text-center">
-              {s.name}
-            </h1>
-          </div>
-        ))}
+      <div className="w-full  mt-3">
+        <h2 className="font-semibold text-3xl mb-3">Seasons</h2>
+        <div className="w-full  flex gap-5 overflow-y-hidden">
+          {info.details.seasons.map((s, i) => (
+            <div className="min-w-[20%]">
+              <img
+                className="h-[40vh] w-full rounded-sm object-cover object-center "
+                src={`https://image.tmdb.org/t/p/original/${s.poster_path}`}
+                alt=""
+              />
+              <h1 className="font-semibold text-sm mt-2 text-zinc-300 text-center">
+                {s.name}
+              </h1>
+            </div>
+          ))}
+        </div>
       </div>
-      </div>
+      <Outlet/>
     </div>
   ) : (
-    <h1 className="font-semibold text-6xl h-screen w-full flex justify-center items-center">Loading..</h1>
+    <h1 className="font-semibold text-6xl h-screen w-full flex justify-center items-center">
+      Loading...
+    </h1>
   );
 }
 

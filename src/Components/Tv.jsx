@@ -52,7 +52,7 @@ function Tv() {
               </span>
               <h3 className="text-xl font-semibold">
                 Tv Shows{" "}
-                <span className="text-xs font-semibold uppercase">{category}</span>
+                <span className="text-[0.6vw]  font-semibold uppercase">{category}</span>
               </h3>
             </div>
             <div className="flex justify-between w-[80%] items-center">

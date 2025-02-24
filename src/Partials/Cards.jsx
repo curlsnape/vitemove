@@ -5,7 +5,7 @@ const Cards = ({ data, title }) => {
   console.log(title);
   console.log(data);
   return (
-    <div className="w-full flex flex-wrap py-20 justify-center gap-8 h-full bg-zinc-900 ">
+    <div className="w-full flex transition-all flex-wrap py-20 justify-center gap-8 h-full bg-zinc-900 ">
       {data.map((Cards, index) => {
         return (
           <Link

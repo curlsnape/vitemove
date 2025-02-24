@@ -1,6 +1,7 @@
 import axios from "../Utils/Axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import noimg from '../assets/noimage.jpg'
 
 const Topnav = () => {
   const [query, setquery] = useState("");
@@ -40,13 +41,13 @@ const Topnav = () => {
                 className="px-5 flex items-center border-black border-b-[1px] py-8  gap-5"
               >
                 <img
-                  className="w-[35vh] h-[25vh] rounded-sm"
-                  src={`https://image.tmdb.org/t/p/original/${
+                  className="w-[35vh] object-cover h-[25vh] rounded-sm"
+                  src={  item.backdrop_path || item.poster_path || item.poster_path?`https://image.tmdb.org/t/p/original/${
                     item.backdrop_path || item.poster_path || item.poster_path
-                  }`}
+                  }`:noimg}
                   alt=""
                 />
-                <h3>{item.name || item.title}</h3>
+                <h3 className="font-semibold">{item.name || item.title}</h3>
               </Link>
             );
           })}

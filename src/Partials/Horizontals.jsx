@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import noimg from "../assets/noimage.jpg";
 function Horizontals({ data }) {
   return (
     <div className="w-full h-[46vh] flex overflow-x-auto oveflow-y-hidden gap-5">
@@ -14,9 +14,15 @@ function Horizontals({ data }) {
             <div className="img w-full h-[54%] ">
               <img
                 className="w-full h-full object-cover"
-                src={`https://image.tmdb.org/t/p/original/${
+                src={
                   card.backdrop_path || card.poster_path || card.poster_path
-                }`}
+                    ? `https://image.tmdb.org/t/p/original/${
+                        card.backdrop_path ||
+                        card.poster_path ||
+                        card.poster_path
+                      }`
+                    : noimg
+                }
                 alt=""
               />
             </div>
@@ -26,7 +32,10 @@ function Horizontals({ data }) {
               </h3>
               <p className="text-xs mt-1">
                 {card.overview.slice(0, 100)}
-                <Link className="text-xs text-transparent bg-clip-text bg-gradient-to-b from-purple-300 via-indigo-500 to-purple-500">
+                <Link
+                  to={`/${card.media_type}/details/${card.id}`}
+                  className="text-xs text-transparent bg-clip-text bg-gradient-to-b from-purple-300 via-indigo-500 to-purple-500"
+                >
                   ...more
                 </Link>
               </p>
